@@ -3,15 +3,16 @@ import { render, screen } from '@testing-library/react'
 import { FlagImage } from '../FlagImage'
 
 vi.mock('next/image', () => ({
-  default: ({ src, alt, className, priority, width, height }: {
+  default: ({ src, alt, className, priority, width, height, fill }: {
     src: string
     alt: string
     className?: string
     priority?: boolean
-    width: number
-    height: number
+    width?: number
+    height?: number
+    fill?: boolean
   }) => (
-    <img src={src} alt={alt} className={className} data-priority={priority} width={width} height={height} />
+    <img src={src} alt={alt} className={className} data-priority={priority} width={width} height={height} data-fill={fill} />
   ),
 }))
 
@@ -42,5 +43,19 @@ describe('FlagImage', () => {
     const img = screen.getByAltText('Flag of France')
     expect(img).toBeInTheDocument()
     expect(img).not.toHaveAttribute('class')
+  })
+
+  it('renders with fill and applies object-cover class', () => {
+    render(<FlagImage src="https://flagcdn.com/de.svg" alt="Flag of Germany" fill />)
+
+    const img = screen.getByAltText('Flag of Germany')
+    expect(img).toHaveAttribute('data-fill', 'true')
+    expect(img).toHaveAttribute('class', 'object-cover')
+  })
+
+  it('merges className with object-cover when fill is set', () => {
+    render(<FlagImage src="https://flagcdn.com/de.svg" alt="Flag of Germany" fill className="rounded" />)
+
+    expect(screen.getByAltText('Flag of Germany')).toHaveAttribute('class', 'object-cover rounded')
   })
 })
