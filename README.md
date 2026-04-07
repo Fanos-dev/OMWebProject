@@ -1,12 +1,41 @@
 # OM Tech Assessment
 
-A Spring Boot REST API backed by a Next.js frontend. The backend exposes country data through a generated OpenAPI contract. The frontend then consumes it and renders the UI.
+A Spring Boot REST API with a Next.js frontend. The backend exposes country data through a generated OpenAPI contract. The frontend then consumes it and renders the UI.
 
 ## Prerequisites
 
-- Java 17
-- Node.js 22
 - Git
+- **Docker** for the recommended setup below
+- Java 17 + Node.js 22: Only needed for manual local setup
+
+## Docker (recommended)
+
+From the project root, build and start both services with a single command:
+
+```bash
+docker compose up --build
+```
+
+To stop everything:
+
+```bash
+docker compose down
+```
+
+## 
+
+---
+## URLs
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:8081 |
+| Swagger UI | http://localhost:8081/swagger-ui.html |
+
+---
+
+## Manual Setup
 
 ## Backend
 
@@ -44,11 +73,3 @@ The app starts on port **3000**.
 ## Running both
 
 The frontend proxies all `/api/*` requests to the backend, so **start the backend first**.
-
-## URLs
-
-| | URL |
-|---|---|
-| Frontend | http://localhost:3000 |
-| Backend API | http://localhost:8081 |
-| Swagger UI | http://localhost:8081/swagger-ui.html |
