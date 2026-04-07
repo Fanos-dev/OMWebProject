@@ -72,9 +72,9 @@ describe('getCountry', () => {
   })
 })
 
-describe('NEXT_PUBLIC_API_URL env var', () => {
+describe('BACKEND_API_URL env var', () => {
   it('uses the env var as the base URL', async () => {
-    vi.stubEnv('NEXT_PUBLIC_API_URL', 'http://api.example.com')
+    vi.stubEnv('BACKEND_API_URL', 'http://api.example.com')
     vi.resetModules()
 
     const { getCountries: freshGetCountries } = await import('../api')
