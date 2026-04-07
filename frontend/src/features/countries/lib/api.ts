@@ -1,6 +1,6 @@
 import type { CountrySummary, CountryDetail } from '../types'
 
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8081'
+const BASE = process.env.BACKEND_API_URL ?? 'http://localhost:8081'
 
 export async function getCountries(): Promise<CountrySummary[]> {
   const res = await fetch(`${BASE}/countries`)
