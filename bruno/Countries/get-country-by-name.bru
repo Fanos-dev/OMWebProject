@@ -1,0 +1,15 @@
+meta {
+  name: Get Country By Name
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/countries/:country
+  body: none
+  auth: none
+}
+
+params:path {
+  country: Brazil
+}
