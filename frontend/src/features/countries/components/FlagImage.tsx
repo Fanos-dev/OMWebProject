@@ -5,9 +5,21 @@ type Props = {
   alt: string
   className?: string
   priority?: boolean
+  fill?: boolean
 }
 
-export function FlagImage({ src, alt, className, priority }: Props) {
+export function FlagImage({ src, alt, className, priority, fill }: Props) {
+  if (fill) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={`object-cover ${className ?? ''}`.trim()}
+        priority={priority}
+      />
+    )
+  }
   return (
     <Image
       src={src}
