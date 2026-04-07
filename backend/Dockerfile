@@ -11,6 +11,7 @@ COPY . .
 ARG APP_MODULE=api
 RUN test -n "$APP_MODULE" || (echo "APP_MODULE build-arg is required" && exit 1)
 
+RUN chmod +x mvnw
 RUN ./mvnw -pl "$APP_MODULE" -am clean package -DskipTests
 
 # Run
