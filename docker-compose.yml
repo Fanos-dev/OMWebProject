@@ -1,5 +1,6 @@
 services:
   backend:
+    image: ghcr.io/fanos-dev/omwebproject/backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -9,6 +10,7 @@ services:
       - app-net
 
   frontend:
+    image: ghcr.io/fanos-dev/omwebproject/frontend:latest
     build:
       context: ./frontend
       dockerfile: Dockerfile
